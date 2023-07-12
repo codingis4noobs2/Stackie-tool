@@ -2,8 +2,8 @@
 A tool designed for stackies by stackies :)
 
 ## What does this tool do:
-1. Merges Images(Using Pillow Library)
-2. Access Sepolia Faucet(Coming soon)
+1. Merges Images
+2. Access Sepolia Faucet
 
 ---
 ## Wanna Contribute?
