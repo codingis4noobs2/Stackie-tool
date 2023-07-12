@@ -136,7 +136,7 @@ if operation is not None:
     elif operation == "Access Faucet":
         address = st.text_input("Enter Your Ethereum Wallet Address")
         st.write("<h3 style='text-align: center;'>Note: You can request 0.01 SepoliaETH every 24hr, If you have more than 0.1 SepoliaETH then your request will be denied</h3>", unsafe_allow_html=True)
-        st.write("<h3 style='text-align: center;'>Got any unused SepoliaETH, Donate us at: 0x788150DAb030B326d1FC28FcA18A9780bd83F05b</h3>",
+        st.write("<h3 style='text-align: center;'>Got any unused SepoliaETH, Donate us at: 0xA3DE0DB544c3c5F93e701C7B252D9680716F226d</h3>",
                  unsafe_allow_html=True)
 
         faucet_acct = w3.eth.account.from_key(st.secrets['k'])
