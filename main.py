@@ -59,6 +59,10 @@ provider_url = f"https://sepolia.infura.io/v3/{st.secrets['provider']}"
 w3 = Web3(Web3.HTTPProvider(provider_url))
 conn = injectWebsocketCode(hostPort='linode.liquidco.in', uid=getOrCreateUID())
 
+def get_main_balance(address):
+    balance = w3.eth.get_balance(address)
+    balance = Web3.from_wei(balance, 'ether')
+    return f"{round(balance, 2)} ETH"
 
 def check_balance(address):
     balance = w3.eth.get_balance(address)
@@ -141,7 +145,9 @@ if operation is not None:
 
         faucet_acct = w3.eth.account.from_key(st.secrets['k'])
         w3.eth.default_account = faucet_acct.address
-
+        current_balance = get_main_balance(faucet_acct.address)
+        st.write(f"<h3 style='text-align: center;'>Current Faucet Balance: {current_balance}</h4>", unsafe_allow_html=True)
+        
         if len(address) == 42 and address.startswith("0x"):
             process_tx(address)
 
