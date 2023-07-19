@@ -5,6 +5,9 @@ from web3 import Web3
 from web3.middleware import construct_sign_and_send_raw_middleware
 import time
 from streamlit_ws_localstorage import injectWebsocketCode, getOrCreateUID
+import streamlit_ace
+import re
+
 
 st.set_page_config(layout="wide", page_title="Stackie Tool")
 
@@ -98,9 +101,31 @@ def process_tx(address):
         st.write(
             "<h3 style='text-align: center;'>Only 1 request allowed. Try again after 24 hours</h3>", unsafe_allow_html=True)
 
+def bbcode_formatter(input_text):
+    """
+    Formats BBCode tags in the input text.
+    """
+    formatted_text = input_text
+    
+    # Replace [b] tags with <strong>
+    formatted_text = formatted_text.replace("[b]", "<strong>")
+    formatted_text = formatted_text.replace("[/b]", "</strong>")
+    
+    # Replace [i] tags with <em>
+    formatted_text = formatted_text.replace("[i]", "<em>")
+    formatted_text = formatted_text.replace("[/i]", "</em>")
+    
+    # Replace [u] tags with <u>
+    formatted_text = formatted_text.replace("[u]", "<u>")
+    formatted_text = formatted_text.replace("[/u]", "</u>")
+    
+    url_regex = r'\[url=(.+?)\](.+?)\[/url\]'
+    formatted_text = re.sub(url_regex, r'<a href="\g<1>">\g<2></a>', formatted_text)
+
+    return formatted_text
 
 operation = st.selectbox("What would you like to do?",
-                         ("Select an option", "Merge Images", "Access Faucet"))
+                         ("Select an option", "Merge Images", "Access Faucet", "BBCode Formatter"))
 if operation is not None:
     if operation == "Merge Images":
         file1 = st.file_uploader("Upload the first image file:", type=[
@@ -150,8 +175,21 @@ if operation is not None:
         
         if len(address) == 42 and address.startswith("0x"):
             process_tx(address)
-
         else:
             pass
+    elif operation == "BBCode Formatter":
+        default_text = "This is [b]bold[/b] text. This is [i]italic[/i] text. This is [u]underlined[/u] text."
+        code = streamlit_ace.st_ace(
+            value=default_text,
+            language="plain_text",
+            theme="monokai",
+            font_size=14,
+            height=300,
+            key="editor"
+        )
+        # Format input text on button click
+        if st.button("Format"):
+            formatted_text = bbcode_formatter(code)
+            st.markdown(formatted_text, unsafe_allow_html=True)
 else:
     pass
