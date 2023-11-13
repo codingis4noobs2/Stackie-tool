@@ -7,7 +7,9 @@ import time
 from streamlit_ws_localstorage import injectWebsocketCode, getOrCreateUID
 import streamlit_ace
 import re
-
+import asyncio
+loop = asyncio.new_event_loop()
+asyncio.set_event_loop(loop)
 
 st.set_page_config(layout="wide", page_title="Stackie Tool")
 
