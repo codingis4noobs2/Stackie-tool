@@ -4,5 +4,5 @@ Pillow
 protobuf
 streamlit==1.23.0
 streamlit-ws-localstorage
-web3
+web3====6.11.1
 streamlit_ace
