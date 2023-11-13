@@ -2,7 +2,7 @@ altair
 numpy
 Pillow
 protobuf
-streamlit
+streamlit==1.23.0
 streamlit-ws-localstorage
 web3
 streamlit_ace
