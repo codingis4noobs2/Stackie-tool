@@ -196,4 +196,4 @@ if operation is not None:
             st.markdown(formatted_text, unsafe_allow_html=True)
 else:
     pass
-st.write("Enjoying my app? Stay updated with more projects by following me on Twitter at [@4gameparth](https://twitter.com/4gameparth)!!", unsafe_allow_html=True)
+st.header("Enjoying my app? Stay updated with more projects by following me on Twitter at [@4gameparth](https://twitter.com/4gameparth)!!", unsafe_allow_html=True)
