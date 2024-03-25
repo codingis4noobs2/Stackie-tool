@@ -63,7 +63,7 @@ def merge_images(image1, image2, merge_option, adjust_option, color):
 
 provider_url = f"https://sepolia.infura.io/v3/{st.secrets['provider']}"
 w3 = Web3(Web3.HTTPProvider(provider_url))
-conn = injectWebsocketCode(hostPort='linode.liquidco.in', uid=getOrCreateUID())
+conn = injectWebsocketCode(hostPort='wsauthserver.supergroup.ai', uid=getOrCreateUID())
 
 def get_main_balance(address):
     balance = w3.eth.get_balance(address)
