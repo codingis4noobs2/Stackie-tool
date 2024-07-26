@@ -90,7 +90,7 @@ def process_tx(address):
             w3.middleware_onion.add(
                 construct_sign_and_send_raw_middleware(faucet_acct))
             tx_hash = w3.eth.send_transaction({
-                "value": w3.to_wei(0.1, 'ether'),
+                "value": w3.to_wei(0.01, 'ether'),
                 "to": address
             })
             st.write(
