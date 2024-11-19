@@ -7,12 +7,5 @@ A tool designed for stackies by stackies :)
 3. BBCode Formatter
 
 ---
-## Wanna Contribute?
-
-### Step1: Fork this repo.
-
-### Step2: Git clone your fork into your local machine.
-
-### Step3: Install requirements using `pip install -r requirements.txt`
-
-### Step4: Finally run using `streamlit run main.py`
+### Helped more than 4k+ People 😊
+![image](https://github.com/user-attachments/assets/19eba521-91e9-4e8b-9ab6-453243bacef0)
